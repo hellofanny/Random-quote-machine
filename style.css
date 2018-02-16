@@ -1,0 +1,37 @@
+body {
+    background-color: slategray;
+ 
+}
+
+.content {
+    margin-bottom: 3rem;
+}
+
+.gretting h2 {
+    font-family: 'Satisfy', cursive;
+    color: white;
+}
+
+.container-fluid {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    max-width: 600px;
+    position: relative;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card p {
+    font-size: 1.2rem;
+}
+
+.blockquote-footer{
+    float: right;
+}
