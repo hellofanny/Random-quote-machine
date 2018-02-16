@@ -1,13 +1,12 @@
 body {
     background-color: slategray;
- 
 }
 
 .content {
     margin-bottom: 3rem;
 }
 
-.gretting h2 {
+.gretting-content h2 {
     font-family: 'Satisfy', cursive;
     color: white;
 }
