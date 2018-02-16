@@ -6,9 +6,14 @@ body {
     margin-bottom: 5rem;
 }
 
+.gretting-content {
+    padding-bottom: 0.6rem;
+}
+
 .gretting-content h2 {
     font-family: 'Satisfy', cursive;
     color: white;
+    text-align: center;
 }
 
 .container-fluid {
