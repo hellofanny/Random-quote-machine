@@ -45,8 +45,13 @@ body {
     font-size: 100%;
 }
 
-.btn {
+.btn{
     color: white;
+}
+
+.fab {
+    color: white;
+    padding-top: 5px;
 }
 
 .buttons-group {

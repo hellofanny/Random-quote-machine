@@ -1,4 +1,5 @@
 
+
 function sayHello() {
     var date = new Date();
     var hours = date.getHours();
@@ -86,6 +87,16 @@ $('#newQuoteButton').on('click', function (e) {
    getQuote();
 });
 
+$('#shareOnTwitter').on('click', function (e) {
+
+    var cleanQuoteText = $('#quote-content').text();
+    var cleanQuoteTitle = $('#quote-title').text();
+
+    var shareText = "\""+cleanQuoteText+"\""+" - "+cleanQuoteTitle;
+    console.log(shareText);
+
+    $("#shareOnTwitter").attr("href","https://twitter.com/intent/tweet?hashtags=aQuoteForYou&text="+encodeURIComponent(shareText));
+ });
 
 /* jQuery(function ($) {
     $('#newQuoteButton').on('click', function (e) {
