@@ -59,3 +59,8 @@ body {
     flex-direction: row-reverse;
     justify-content: space-between;
 }
+
+.cute-footer {
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+}

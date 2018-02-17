@@ -68,23 +68,23 @@ window.addEventListener("load", sayHello);
 window.addEventListener("DOMContentLoaded", getQuote);
 
 
-function getQuote(){
+function getQuote() {
     $.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1",
-    function (data) {
-        var post = data.shift();
-        $("#quote-content").html(post.content);
-        $("#quote-title").text(post.title);
-        console.log(post.content);
-    })
-    .fail(function(jqXHR, textStatus, errorThrown) { 
-        $("#quote-content").html("Smile! Ever tried. Ever failed. No matter. Let's try again. :)");
-        $("#quote-title").text("Someone famous");
-    })
+        function (data) {
+            var post = data.shift();
+            $("#quote-content").html(post.content);
+            $("#quote-title").text(post.title);
+            console.log(post.content);
+        })
+        .fail(function (jqXHR, textStatus, errorThrown) {
+            $("#quote-content").html("Smile! Ever tried. Ever failed. No matter. Let's try again. :)");
+            $("#quote-title").text("Someone famous");
+        })
     pickRandomColor();
 }
 
 $('#newQuoteButton').on('click', function (e) {
-   getQuote();
+    getQuote();
 });
 
 $('#shareOnTwitter').on('click', function (e) {
@@ -92,11 +92,11 @@ $('#shareOnTwitter').on('click', function (e) {
     var cleanQuoteText = $('#quote-content').text();
     var cleanQuoteTitle = $('#quote-title').text();
 
-    var shareText = "\""+cleanQuoteText+"\""+" - "+cleanQuoteTitle;
+    var shareText = "\"" + cleanQuoteText + "\"" + " - " + cleanQuoteTitle;
     console.log(shareText);
 
-    $("#shareOnTwitter").attr("href","https://twitter.com/intent/tweet?hashtags=aQuoteForYou&text="+encodeURIComponent(shareText));
- });
+    $("#shareOnTwitter").attr("href", "https://twitter.com/intent/tweet?hashtags=aQuoteForYou&text=" + encodeURIComponent(shareText));
+});
 
 /* jQuery(function ($) {
     $('#newQuoteButton').on('click', function (e) {
