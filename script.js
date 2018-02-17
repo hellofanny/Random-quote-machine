@@ -63,23 +63,34 @@ function pickRandomColor() {
 window.addEventListener("load", sayHello);
 
 
+function getQuote(){
+    $.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1",
+    function (data) {
+        var post = data.shift();
+        $("#quote-content").html(post.content);
+        $("#quote-title").text(post.title);
+        console.log(post.content);
+    });
+}
+
 // $.fn.colorize = function custom_colorize(some_color) {
 //     this.css('color', some_color);
 //     return this;
 // }
 
-// $('#newQuoteButton').on('click', function(e) {
-//     $.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1", 
-//     function(data) {
-//         var post = data.shift();
-//         $("#quote-content").html(post.content);
-//         $("#quote-title").text(post.title);
-//         console.log(post.content);
-//       });
-//   });
+$('#newQuoteButton').on('click', function (e) {
+    $.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1",
+        function (data) {
+            var post = data.shift();
+            $("#quote-content").html(post.content);
+            $("#quote-title").text(post.title);
+            console.log(post.content);
+        });
+    pickRandomColor();
+});
 
 
-jQuery(function ($) {
+/* jQuery(function ($) {
     $('#newQuoteButton').on('click', function (e) {
         e.preventDefault();
         $.ajax({
@@ -100,4 +111,4 @@ jQuery(function ($) {
         });
         pickRandomColor();
     });
-});
+}); */
