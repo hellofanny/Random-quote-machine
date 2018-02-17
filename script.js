@@ -69,7 +69,7 @@ window.addEventListener("DOMContentLoaded", getQuote);
 
 
 function getQuote() {
-    $.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1",
+    $.getJSON("https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1",
         function (data) {
             var post = data.shift();
             $("#quote-content").html(post.content);
@@ -80,6 +80,7 @@ function getQuote() {
             $("#quote-content").html("Smile! Ever tried. Ever failed. No matter. Let's try again. :)");
             $("#quote-title").text("Someone famous");
         })
+    $.ajaxSetup({ cache: false});
     pickRandomColor();
 }
 
@@ -120,3 +121,5 @@ $('#shareOnTwitter').on('click', function (e) {
         pickRandomColor();
     });
 }); */
+
+
