@@ -17,6 +17,9 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
+      <!-- jquery -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
       <!-- Custom Font -->
       <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
 
@@ -36,14 +39,16 @@
     <div class="card">
       <div class="card-body">
         <blockquote class="blockquote mb-0">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. 
+          <p id="quote-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. 
             rem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a a
-            rem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a a
+            rem ipsum dolor sit amet
           </p>
-          <footer class="blockquote-footer">Someone famous in
-            <cite title="Source Title">Source Title</cite>
-          </footer>
         </blockquote>
+        <footer class="blockquote-footer" id="quote-title">Someone famous</footer>
+        <br><br>
+        <div style="float:right;">
+          <button type="button" class="btn" id="newQuoteButton">new quote</button>
+        </div>
        
       </div>
     </div>

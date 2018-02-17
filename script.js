@@ -31,18 +31,60 @@ function sayHello(){
     document.getElementById("greeting").innerHTML = greetingText;
 }
 
+
 function pickRandomColor(){
+
     var colors = ["#a0ab44", "#f8bfb9", "#f8bd76", "#b26c3e", "#f3a683",
                 "#b1bb39", "#778beb", "#f78fb3", "#3dc1d3", "#786fa6", "#303952",
                 "#ea8685", "#f5cd79", "#d98047", "#6db096"];
 
     var colorIndex = Math.floor(Math.random() * colors.length);
 
+    console.log(colorIndex);
     //console.log(colors[colorIndex]);
+    document.getElementById("newQuoteButton").style.background = colors[colorIndex];
     document.body.style.backgroundColor = colors[colorIndex];
 }
 
 
 window.addEventListener("load", sayHello);
-window.addEventListener("load", pickRandomColor);
 
+
+// $.fn.colorize = function custom_colorize(some_color) {
+//     this.css('color', some_color);
+//     return this;
+// }
+
+// $('#newQuoteButton').on('click', function(e) {
+//     $.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1", 
+//     function(data) {
+//         var post = data.shift();
+//         $("#quote-content").html(post.content);
+//         $("#quote-title").text(post.title);
+//         console.log(post.content);
+//       });
+//   });
+
+
+jQuery( function( $ ) {
+    $( '#newQuoteButton' ).click(function ( e ) {
+      e.preventDefault();
+      $.ajax( {
+        url: 'http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1',
+        success: function ( data ) {
+          var post = data.shift(); // The data is an array of posts. Grab the first one.
+          $( '#quote-title' ).text( post.title );
+          $( '#quote-content' ).html( post.content );
+  
+          // If the Source is available, use it. Otherwise hide it.
+          if ( typeof post.custom_meta !== 'undefined' && typeof post.custom_meta.Source !== 'undefined' ) {
+            $( '#quote-source' ).html( 'Source:' + post.custom_meta.Source );
+          } else {
+            $( '#quote-source' ).text( '' );
+          }
+        },
+        cache: false
+      } );
+      pickRandomColor();
+    } );
+  } );

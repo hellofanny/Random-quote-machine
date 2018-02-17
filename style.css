@@ -30,6 +30,7 @@ body {
 
 .card-body {
     padding: 1.5rem;
+    margin: 1.5rem;
 }
 
 .card p {
@@ -38,4 +39,9 @@ body {
 
 .blockquote-footer{
     float: right;
+    font-size: 100%;
+}
+
+#newQuoteButton {
+    color: white;
 }
