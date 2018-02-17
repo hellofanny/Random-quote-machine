@@ -47,6 +47,9 @@ function pickRandomColor() {
     $("#newQuoteButton").animate({
         backgroundColor: colors[colorIndex]
     }, 500);
+    $("#shareOnTwitter").animate({
+        backgroundColor: colors[colorIndex]
+    }, 500);
 
     // document.getElementById("newQuoteButton").style.background = colors[colorIndex];
     // document.body.style.backgroundColor = colors[colorIndex];

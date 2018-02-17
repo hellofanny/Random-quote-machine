@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css?family=Satisfy');
 
 body {
@@ -44,7 +45,12 @@ body {
     font-size: 100%;
 }
 
-#newQuoteButton {
+.btn {
     color: white;
-    background: slategray;
+}
+
+.buttons-group {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
 }
