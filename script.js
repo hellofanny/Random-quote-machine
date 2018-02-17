@@ -31,6 +31,7 @@ function sayHello(){
     document.getElementById("greeting").innerHTML = greetingText;
 }
 
+var colorIndex = 0;
 
 function pickRandomColor(){
 
@@ -38,12 +39,24 @@ function pickRandomColor(){
                 "#b1bb39", "#778beb", "#f78fb3", "#3dc1d3", "#786fa6", "#303952",
                 "#ea8685", "#f5cd79", "#d98047", "#6db096"];
 
-    var colorIndex = Math.floor(Math.random() * colors.length);
+    //var colorIndex = Math.floor(Math.random() * colors.length);
+    
+    $("html body").animate({
+        backgroundColor: colors[colorIndex],
+      }, 1000);
+      $("#newQuoteButton").animate({
+        backgroundColor: colors[colorIndex]
+      }, 500);
 
+    // document.getElementById("newQuoteButton").style.background = colors[colorIndex];
+    // document.body.style.backgroundColor = colors[colorIndex];
+
+    if (colorIndex > colors.length){
+        colorIndex = 0;
+    } else {
+        colorIndex +=1;
+    }
     console.log(colorIndex);
-    //console.log(colors[colorIndex]);
-    document.getElementById("newQuoteButton").style.background = colors[colorIndex];
-    document.body.style.backgroundColor = colors[colorIndex];
 }
 
 
@@ -66,12 +79,12 @@ window.addEventListener("load", sayHello);
 //   });
 
 
-jQuery( function( $ ) {
-    $( '#newQuoteButton' ).click(function ( e ) {
+jQuery( function($) {
+    $( '#newQuoteButton' ).on('click', function (e) {
       e.preventDefault();
       $.ajax( {
         url: 'http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1',
-        success: function ( data ) {
+        success: function (data) {
           var post = data.shift(); // The data is an array of posts. Grab the first one.
           $( '#quote-title' ).text( post.title );
           $( '#quote-content' ).html( post.content );
