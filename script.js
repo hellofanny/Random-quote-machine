@@ -71,7 +71,11 @@ function getQuote(){
         $("#quote-content").html(post.content);
         $("#quote-title").text(post.title);
         console.log(post.content);
-    });
+    })
+    .fail(function(jqXHR, textStatus, errorThrown) { 
+        $("#quote-content").html("Smile! Ever tried. Ever failed. No matter. Let's try again. :)");
+        $("#quote-title").text("Someone famous");
+    })
     pickRandomColor();
 }
 
