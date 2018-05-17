@@ -1,3 +1,17 @@
+var i = 0;
+var speed = 80;
+var textToType = sayHello();
+
+console.log(textToType.length);
+
+function typeWriter() {
+    if (i < textToType.length) {
+        document.getElementById("greeting").innerHTML += textToType.charAt(i);
+        i += 1;
+        console.log(i);
+        setTimeout(typeWriter, speed);
+    }
+}
 
 function sayHello() {
     var date = new Date();
@@ -19,16 +33,13 @@ function sayHello() {
 
         case (hours >= 18 && hours <= 23):
             greetingText = "Good night !";
-            console.log("hee");
             break;
 
         default:
             greetingText = "Hello!";
     }
 
-    console.log("hee");
-
-    document.getElementById("greeting").innerHTML = greetingText;
+    return greetingText;
 }
 
 var colorIndex = 0;
@@ -59,11 +70,10 @@ function pickRandomColor() {
     } else {
         colorIndex += 1;
     }
-    console.log(colorIndex);
 }
 
 
-window.addEventListener("load", sayHello);
+window.addEventListener("load", typeWriter);
 window.addEventListener("DOMContentLoaded", getQuote);
 
 
@@ -73,13 +83,12 @@ function getQuote() {
             var post = data.shift();
             $("#quote-content").html(post.content);
             $("#quote-title").text(post.title);
-            console.log(post.content);
         })
         .fail(function (jqXHR, textStatus, errorThrown) {
             $("#quote-content").html("Smile! Ever tried. Ever failed. No matter. Let's try again. :)");
             $("#quote-title").text("Someone famous");
         })
-    $.ajaxSetup({ cache: false});
+    $.ajaxSetup({ cache: false });
     pickRandomColor();
 }
 
@@ -93,32 +102,7 @@ $('#shareOnTwitter').on('click', function (e) {
     var cleanQuoteTitle = $('#quote-title').text();
 
     var shareText = "\"" + cleanQuoteText + "\"" + " - " + cleanQuoteTitle;
-    console.log(shareText);
 
     $("#shareOnTwitter").attr("href", "https://twitter.com/intent/tweet?hashtags=aQuoteForYou&text=" + encodeURIComponent(shareText));
 });
-
-/* jQuery(function ($) {
-    $('#newQuoteButton').on('click', function (e) {
-        e.preventDefault();
-        $.ajax({
-            url: 'http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1',
-            success: function (data) {
-                var post = data.shift(); // The data is an array of posts. Grab the first one.
-                $('#quote-title').text(post.title);
-                $('#quote-content').html(post.content);
-
-                // If the Source is available, use it. Otherwise hide it.
-                if (typeof post.custom_meta !== 'undefined' && typeof post.custom_meta.Source !== 'undefined') {
-                    $('#quote-source').html('Source:' + post.custom_meta.Source);
-                } else {
-                    $('#quote-source').text('');
-                }
-            },
-            cache: false
-        });
-        pickRandomColor();
-    });
-}); */
-
 
